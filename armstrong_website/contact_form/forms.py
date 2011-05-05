@@ -11,6 +11,7 @@ from django.template import loader
 from django.template import RequestContext
 from django.contrib.sites.models import Site
 
+from contact_form.models import Contact
 
 # I put this on all required fields, because it's easier to pick up
 # on them with CSS or JavaScript if they have a class of "required"
@@ -232,7 +233,7 @@ class ContactForm(forms.Form):
                                          password=settings.SOCKETLABS_PASSWORD)
         
         send_mail(fail_silently=fail_silently, connection=smtp_connection, **self.get_message_dict())
-		
+        
 class ArmstrongContactForm(ContactForm):
     company = forms.CharField(max_length=100,
                               widget=forms.TextInput(attrs=attrs_dict),
@@ -240,3 +241,13 @@ class ArmstrongContactForm(ContactForm):
     from_email = 'info@armstrongcms.org'
     subject_template_name = "contact_form/contact_form_subject_armstrong.txt"
     template_name = 'contact_form/contact_form_armstrong.txt'
+
+    def save(self, *args, **kwargs):
+        data = {
+            'name'      : self.cleaned_data.get('name', None),
+            'email'     : self.cleaned_data.get('email', None),
+            'body'      : self.cleaned_data.get('body', None),
+            'company'   : self.cleaned_data.get('company', None),
+        }
+        Contact(**data).save()
+        return super(ArmstrongContactForm, self).save(*args, **kwargs)
