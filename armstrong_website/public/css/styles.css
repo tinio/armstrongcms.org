@@ -114,15 +114,15 @@ body {
 #logo {
     position:absolute;
     left:0;
-    top:33px;
+    top:20px;
     margin:0;
 }
 
 #logo a {
-    width:440px;
-    height:100px;
+    width:304px;
+    height:76px;
     display:block;
-    background:url("../images/logo/armstrong_440x100_trans.png") no-repeat;
+    background:url("../images/logo2.png") no-repeat;
     overflow:hidden;
     text-indent:-999px;
 }
@@ -172,6 +172,29 @@ body {
     text-shadow:0 1px 5px #000000;
     background:url("../images/hdhr.png") 0 100% no-repeat;
 }
+
+.row-one h3 {
+    font-weight:normal;
+    font-family:"Georgia",serif;
+    font-size:26px;
+    font-style:italic;
+    text-align:center;
+    padding:0 0 30px 0;
+    text-shadow:0 1px 5px #000000;
+    color: #ecb237;
+    text-decoration: none;
+    background:url("../images/hdhr.png") 0 100% no-repeat;
+}
+
+.row-one h3 a {
+    color: #ecb237;
+    text-decoration: none;
+}
+
+.row-one h3 a:hover {
+    text-decoration: underline;
+}
+
 
 .bitaboutit {
     text-shadow:0 1px 1px #131313;
